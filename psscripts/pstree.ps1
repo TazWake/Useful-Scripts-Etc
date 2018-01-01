@@ -1,4 +1,4 @@
-#Copied from Investigate Like a Rockstar
+# Copied from Investigate Like a Rockstar
 
 $ProcessesById = @{}
 foreach ($Process in (Get-WMIObject -Class Win32_Process)) {
