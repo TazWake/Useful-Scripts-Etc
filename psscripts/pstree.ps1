@@ -48,3 +48,4 @@ Write-Output ("{0,6} {1} {2} {3} {4}" -f "---", "----------------------------  "
 
 foreach ($Process in ($ProcessesWithoutParents | Sort-Object CreationDate)) {
   Show-ProcessTree $Process.ProcessId 0
+  }
