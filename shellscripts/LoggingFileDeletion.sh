@@ -3,6 +3,7 @@
 # This script logs all file deletion requests
 # Usage
 # -----
+#
 # Option 1
 # Save the script as a local file - eg: logrm.sh
 # alias rm=logrm
