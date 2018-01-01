@@ -1,7 +1,7 @@
 # This is a simple script to collect IR data
 # Copied from Investigate Like a Rockstar
 
-Write-host "[+} Commencing data collection..." - foregroundcolor white
+Write-host "[+} Commencing data collection..." -foregroundcolor white
 date | out-file -append ".\hash.txt"
 
 # Collect general information
