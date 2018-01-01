@@ -3,6 +3,11 @@
 # Note that you need to ensure "scriptbc" is in your current path
 # because it's invoked within the script more than once.
 
+# Example of use
+# formatdir ~
+# echo "$file ($(readablesize $size))|"
+# size=$(ls "$file" | wc -l | sed 's/[^[:digit:]]//g')
+
 scriptbc=$(which scriptbc)
 
 # Function to format sizes in KB to KB, MB, or GB for more readable output
