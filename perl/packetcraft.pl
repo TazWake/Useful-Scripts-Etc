@@ -18,7 +18,7 @@ $raw_net -> set(
         {
             # this is an echo-request
             type => 8,
-            # Regular data makes traffic easier to identify when monitoring
+            # Predefined data makes traffic easier to identify when monitoring
             data => "beb39b1d642fc17760f5e40240b9e0cd"
             "0c8326b63a260b2296c4f5ae49210ab4".
             "cc6c727ffa0771192b5fb769b607d027" x 4;
