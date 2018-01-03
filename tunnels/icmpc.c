@@ -40,7 +40,7 @@ void main(int argc, char **argv)
           RID=atoi(argv[2]);
           lsock=socket(AF_INET,SOCK_RAW,1);
           send_connect(host,RID,"a");
-          stat e=1;
+          state=1;
   fcntl(lsock,F_SETFL,O_NONBLOCK);
   fcntl(fileno(stdin),F_SETFL,O_NONBLOCK);
 
