@@ -8,8 +8,8 @@ echo "================================"
 echo "screen resolution"
 echo xdpyinfo | grep dimensions
 
-echo "Network Config"
-ifconfig
+echo "Network Config written to file"
+ifconfig > ./ifconfig.txt
 
 echo "OS version"
 uname -a
