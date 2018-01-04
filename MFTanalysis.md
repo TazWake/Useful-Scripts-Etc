@@ -8,7 +8,9 @@ In this example, we are believe the attackers used `scvhost.exe` as their payloa
 ```ls -li /mnt/windows_mount/Windows/TEMP/scvhost.exe```
 
 This will confirm the presence of the file and return an `inode` (the first number). For example you will get something like this:
+
 ```62164 -rwxrwxrwx 1 root root 102400 Mar 31  2003 /mnt/windows_mount/Windows/TEMP/scvhost.exe```
+
 You can use `istat` to pull additional information such as the $SI and $FN timestamps using the inode number (in this example it is **62164**)
 
 ```istat {path/to/disk/image}.E01 62164```
@@ -37,5 +39,10 @@ Accessed:	2017-04-01 23:40:19.003151200 (UTC)
 ```
 Looking at this, there is strong evidence that this file has been [timestomped](http://www.forensicswiki.org/wiki/Timestomp) and in most cases this would be evidence of malicious activity.
 
+## Using Excel-Fu
+If you dont have an obvious suspicious file, you can do a more generic threat hunt, using python to parse the MFT and produce a CSV document.
+This can be analysed in Excel as you see fit. The columns include filename, path and $SI / $FN data.
 
+```analyzeMFT.py -f /mnt/windows_mount/\$MFT -a -e -o {path/to/output/file}.csv```
 
+You can find [analyseMFT.py on GitHub](https://github.com/dkovar/analyzeMFT) if it isn't already installed on your distro of choice.
