@@ -27,6 +27,23 @@ mount -o ro,loop,show_sys_files,streams_interface+windows ewf1 /mnt/windows_moun
 If there is a keyword whitelist, this can be used to filter against.
 ```grep -v -i -f {path/to/file}whitelist.txt {path/to/file}-mactime-timeline.csv > {path/to/file}-mactime-timeline-final.csv```
 
+## Supplementary Data Collection
+### RegRipper to verify data
+```shell
+cd /mnt/windows_mount/users/{USERNAME}
+rip.pl -r NTUSER.DAT -p recentdocs > {path/to/file}/recent-docs.txt
+cat {path/to/file}/recent-docs.txt
+```
+### RegRipper to check wordwheel query
+```shell
+cd /mnt/windows_mount/users/{USERNAME}
+rip.pl -r NTUSER.DAT -p wordwheelquery > {path/to/file}/wordwheelquery.txt
+cat {path/to/file}/wordwheelquery.txt
+```
+### Carving Prefetch
+#### using pf (licence required)
+```pf -v /mnt/windows_mount/Windows/Prefetch/{prefetchfile}.pf```
+
 # Super Timeline Creation
 
 ## Mount the evidence file
@@ -40,7 +57,7 @@ mount -o ro,loop,show_sys_files,streams_interface+windows ewf1 /mnt/windows_moun
 ```log2timeline.py {path/to/file}plaso.dump {path/to/file}.E0```
 
 ## Filter
-```psort.py -z "UCT" -o L2tcsv{path/to/file}plaso.dump "date > '{start date}' AND date < 'end date'" > {path/to/file}plaso.csv```
+```psort.py -z "UCT" -o L2tcsv {path/to/file}plaso.dump "date > '{start date}' AND date < 'end date'" > {path/to/file}plaso.csv```
 Note: The dates should be in YYYY-MM-DD HH:MM:SS format. For example: `2018-01-01 00:00:01`.
 
 ## Keyword whitelist
