@@ -6,7 +6,7 @@ if [ $# -ne 1 ]
         exit
 fi
 
-FILES_ARRAY=(`ls $1`)
+FILES_ARRAY=(`ls -a $1`)
 FILES_ARRAY_LENGTH=${#FILES_ARRAY[@]}
 
 return_random() {
@@ -21,5 +21,5 @@ while [ $choice = "." -o $choice = ".." ]
         return_random
     done
 
-echo "Trying: \"$choice\", $candidate of $FILES_ARRAY_LENGTH"
-`openvpn $1$choice`
+echo "Trying: \"$choice\", $candidate of $FILES_ARRAY_LENGTH in $1"
+`openvpn $1/$choice`
