@@ -2,7 +2,7 @@
 
 if [ $# -ne 1 ]
     then
-        echo "Usage: arbitraryvpn <path>"
+        echo "Usage: .\vpnconnector.sh <path>"
         exit
 fi
 
