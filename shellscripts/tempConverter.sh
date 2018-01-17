@@ -26,7 +26,7 @@ F ) # Fahrenheit to Celsius formula: Tc = (F - 32) / 1.8
     ;;
 
 C ) # Celsius to Fahrenheit formula: Tf = (9/5)*Tc+32
-    cels=$temp86 Chapter 3
+    cels=$temp86
     kelv="$(echo "scale=2;$cels + 273.15" | bc)"
     farn="$(echo "scale=2;(1.8 * $cels) + 32" | bc)"
     ;;
