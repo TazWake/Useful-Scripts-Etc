@@ -15,14 +15,10 @@ mount -o ro,loop,show_sys_files,streams_interface+windows ewf1 /mnt/windows_moun
 ```fls -r -m C: {path/to/file}.E01 > {path/to/file}-bodyfile```
 
 ## Volatility Timeliner
-```python
-vol.py -f {path/to/file}.raw --profile=PROFILE timeliner --output=body --outputfile={path/to/file}/timeliner.body
-```
+```vol.py -f {path/to/file}.raw --profile=PROFILE timeliner --output=body --outputfile={path/to/file}/timeliner.body```
 
 ## Combine timelines
-```shell
-cat {path/to/file}/timeliner.body >> {path/to/file}-bodyfile
-```
+```cat {path/to/file}/timeliner.body >> {path/to/file}-bodyfile```
 
 ## Extract the combined timeline
 ```mactime -d -b {path/to/file}-bodyfile {start date}..{end date} > {path/to/file}-mactime-timeline.csv```
