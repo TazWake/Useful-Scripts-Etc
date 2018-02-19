@@ -15,10 +15,14 @@ mount -o ro,loop,show_sys_files,streams_interface+windows ewf1 /mnt/windows_moun
 ```fls -r -m C: {path/to/file}.E01 > {path/to/file}-bodyfile```
 
 ## Volatility Timeliner
-```vol.py -f {path/to/file}.raw --profile=PROFILE timeliner --output=body --outputfile={path/to/file}/timeliner.body```
+```python
+vol.py -f {path/to/file}.raw --profile=PROFILE timeliner --output=body --outputfile={path/to/file}/timeliner.body
+```
 
 ## Combine timelines
-```cat {path/to/file}/timeliner.body >> {path/to/file}-bodyfile```
+```shell
+cat {path/to/file}/timeliner.body >> {path/to/file}-bodyfile
+```
 
 ## Extract the combined timeline
 ```mactime -d -b {path/to/file}-bodyfile {start date}..{end date} > {path/to/file}-mactime-timeline.csv```
@@ -42,7 +46,9 @@ cat {path/to/file}/wordwheelquery.txt
 ```
 ### Carving Prefetch
 #### using pf (licence required)
-```pf -v /mnt/windows_mount/Windows/Prefetch/{prefetchfile}.pf```
+```shell
+pf -v /mnt/windows_mount/Windows/Prefetch/{prefetchfile}.pf
+```
 
 # Super Timeline Creation
 
