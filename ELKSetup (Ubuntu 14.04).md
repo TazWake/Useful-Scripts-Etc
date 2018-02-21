@@ -17,4 +17,20 @@
 # Edit Elasticsearch config
 ```sudo nano /etc/elasticsearch/elasticsearch.yml```
 
+## Assumptions
+You want to restrict access to Elasticsearch to prevent external users reading data or shutting down the system.
+
+## Changes
+Modify the 'network.host:' entry to read 'network.host: localhost'
+
+# Start Elasticsearch
+```sudo service elasticsearch restart```
+
+```sudo update-rc.d elasticsearch defaults 95 10```
+
+# Install Kibana
+```echo "deb http://packages.elastic.co/kibana/4.5/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.5.x.list```
+
+
+
 
