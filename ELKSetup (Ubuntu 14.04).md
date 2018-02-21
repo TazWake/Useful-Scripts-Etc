@@ -1,5 +1,7 @@
 # Install Java
-```sudo add-apt-repository -y ppa:webupd8team/java```
+```
+sudo add-apt-repository -y ppa:webupd8team/java
+```
 
 ```sudo apt-get update```
 
@@ -60,7 +62,8 @@ Remeber the details used here as they are required to access the kibana interfac
 ```sudo nano /etc/nginx/sites-available/default```
 Replace the existing content with:
 
-```server {
+```
+server {
     listen 80;
 
     server_name example.com;
@@ -76,7 +79,8 @@ Replace the existing content with:
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;        
     }
-}```
+}
+```
 
 ```sudo service nginx restart```
 
