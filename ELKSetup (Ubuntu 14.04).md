@@ -60,7 +60,6 @@ Remeber the details used here as they are required to access the kibana interfac
 ### Edit kibana config
 ```sudo nano /etc/nginx/sites-available/default```
 Replace the existing content with:
-
 ```
 server {
     listen 80;
@@ -80,7 +79,7 @@ server {
     }
 }
 ```
-
+Then
 ```sudo service nginx restart```
 
 # Install logstash
@@ -94,6 +93,9 @@ sudo apt-get install logstash
 ```sudo mkdir -p /etc/pki/tls/certs```
 
 ```sudo mkdir /etc/pki/tls/private```
+
+Two options - 1 configure SSL to use IP or configure SSL to use DNS.
+
 ### Configure SSL / TLS to use IP addressess
 ```sudo nano /etc/ssl/openssl.cnf```
 
@@ -108,8 +110,17 @@ cd /etc/pki/tls
 sudo openssl req -config /etc/ssl/openssl.cnf -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
 ```
 
+Copy the logstash-forwarder.crt to all servers that will send logs to logstash. 
 
 ### Configure SSL / TLS to use DNS
+If you have a DNS setup with your private internetz, create an A record that contains the ELK box's private IP address. This will be used as the domain name to generate the servers perivat cert - marked as {ELK Server Domain Name} below. 
+An alternative is to use an A record that points to the server's public IP address. 
+Ensure that the log source servers will be able to resolve the domain name to ELKserver.
 
+```
+cd /etc/pki/tls
+sudo openssl req -subj '/CN={ELK Server Domain Name}' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
+```
+## Configure Logstash
 
 
