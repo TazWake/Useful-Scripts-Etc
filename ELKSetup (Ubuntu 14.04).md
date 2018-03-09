@@ -1,9 +1,9 @@
 # Install Java
-```sudo add-apt-repository -y ppa:webupd8team/java```
-
-```sudo apt-get update```
-
-```sudo apt-get -y install oracle-java8-installer```
+```
+sudo add-apt-repository -y ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get -y install oracle-java8-installer
+```
 
 # Install Elasticsearch
 ```wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -```
