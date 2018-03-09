@@ -1,7 +1,5 @@
 # Install Java
-```
-sudo add-apt-repository -y ppa:webupd8team/java
-```
+```sudo add-apt-repository -y ppa:webupd8team/java```
 
 ```sudo apt-get update```
 
