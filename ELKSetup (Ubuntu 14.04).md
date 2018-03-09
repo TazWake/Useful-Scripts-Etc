@@ -6,13 +6,12 @@ sudo apt-get -y install oracle-java8-installer
 ```
 
 # Install Elasticsearch
-```wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -```
-
-```echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list```
-
-```sudo apt-get update```
-
-```sudo apt-get -y install elasticsearch```
+```
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list
+sudo apt-get update
+sudo apt-get -y install elasticsearch
+```
 
 # Edit Elasticsearch config
 ```sudo nano /etc/elasticsearch/elasticsearch.yml```
@@ -24,16 +23,17 @@ You want to restrict access to Elasticsearch to prevent external users reading d
 Modify the `network.host:` entry to read `network.host: localhost`
 
 # Start Elasticsearch
-```sudo service elasticsearch restart```
-
-```sudo update-rc.d elasticsearch defaults 95 10```
+```
+sudo service elasticsearch restart
+sudo update-rc.d elasticsearch defaults 95 10
+```
 
 # Install Kibana
-```echo "deb http://packages.elastic.co/kibana/4.5/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.5.x.list```
-
-```sudo apt-get update```
-
-```sudo apt-get -y install kibana```
+```
+echo "deb http://packages.elastic.co/kibana/4.5/debian stable main" | sudo tee -a /etc/apt/sources.list.d/kibana-4.5.x.list
+sudo apt-get update
+sudo apt-get -y install kibana
+```
 
 # Edit Kibana Config
 ```sudo nano /opt/kibana/config/kibana/yml```
@@ -43,9 +43,10 @@ Modify `server.host` to specify `server.host: "localhost"`
 
 # Start Kibana
 
-```sudo update-rc.d kibana defaults 96 9```
-
-```sudo service kibana start```
+```
+sudo update-rc.d kibana defaults 96 9
+sudo service kibana start
+```
 
 # Install nginx
 
@@ -83,11 +84,11 @@ server {
 ```sudo service nginx restart```
 
 # Install logstash
-```echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list```
-
-```sudo apt-get update```
-
-```sudo apt-get install logstash```
+```
+echo 'deb http://packages.elastic.co/logstash/2.2/debian stable main' | sudo tee /etc/apt/sources.list.d/logstash-2.2.x.list
+sudo apt-get update
+sudo apt-get install logstash
+```
 
 ## Generate SSL certificates
 ```sudo mkdir -p /etc/pki/tls/certs```
