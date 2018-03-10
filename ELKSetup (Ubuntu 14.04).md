@@ -122,5 +122,29 @@ cd /etc/pki/tls
 sudo openssl req -subj '/CN={ELK Server Domain Name}' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
 ```
 ## Configure Logstash
+Configuration files are in JSON format and stored in /etc/logstash/conf.d.
+There are three sections
+* inputs
+* filters
+* outputs
+
+### Example INPUT config
+```
+input {
+    sniff {
+        port => 4040
+        ssl => true
+        ssl_certificate => "/etc/pki/tls/certs/logstash-forwarder.crt"
+        ssl_key => "/etc/pki/tls/private/logstash-forwarder.key"
+    }
+}
+```
+This specifies a `sniff` input that will listen on TCP port `4040` and will use the previously generated SSL certificate.
+
+**Note**: Firewll changes may be required to allow this traffic. For example:
+
+Iptables: `sudo iptables -A INPUT -p tcp --dport 4040 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT`
+UFW: `sudo ufw allow 4040`
+etc.
 
 
