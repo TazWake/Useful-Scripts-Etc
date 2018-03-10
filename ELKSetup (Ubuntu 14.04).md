@@ -141,10 +141,10 @@ input {
 ```
 This specifies a `sniff` input that will listen on TCP port `4040` and will use the previously generated SSL certificate.
 
-**Note**: Firewll changes may be required to allow this traffic. For example:
+**Note**: Firewall changes may be required to allow this traffic. For example:
 
-Iptables: `sudo iptables -A INPUT -p tcp --dport 4040 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT`
-UFW: `sudo ufw allow 4040`
+- Iptables: `sudo iptables -A INPUT -p tcp --dport 4040 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT`
+- UFW: `sudo ufw allow 4040`
 etc.
 
 
