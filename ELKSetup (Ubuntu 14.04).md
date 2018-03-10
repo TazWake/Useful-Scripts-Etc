@@ -145,6 +145,52 @@ This specifies a `sniff` input that will listen on TCP port `4040` and will use 
 
 - Iptables: `sudo iptables -A INPUT -p tcp --dport 4040 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT`
 - UFW: `sudo ufw allow 4040`
-etc.
+- etc.
+
+### Example FILTER config
+```
+filter {
+  if [type] == "syslog" {
+    grok {
+      match => { "message" => "%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}" }
+      add_field => [ "received_at", "%{@timestamp}" ]
+      add_field => [ "received_from", "%{host}" ]
+    }
+    syslog_pri { }
+    date {
+      match => [ "syslog_timestamp", "MMM  d HH:mm:ss", "MMM dd HH:mm:ss" ]
+    }
+  }
+}
+```
+
+### Example OUTPUT config
+```
+output {
+  elasticsearch {
+    hosts => ["localhost:9200"]
+    sniffing => true
+    manage_template => false
+    index => "%{[@metadata][sniff]}-%{+YYYY.MM.dd}"
+    document_type => "%{[@metadata][type]}"
+  }
+}
+```
+
+## Test and Restart
+
+Test the logstash config:
+```
+sudo /opt/logstash/bin/logstash --configtest -f /etc/logstash/conf.d/
+```
+
+Restart logstash
+```
+sudo systemctl restart logstash
+sudo systemctl enable logstash
+```
+
+# Load Kibana Dashboards
+
 
 
