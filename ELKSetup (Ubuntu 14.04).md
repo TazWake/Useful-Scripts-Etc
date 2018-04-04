@@ -197,9 +197,40 @@ There are Kibana dashboards provided with Elastic to get things started quickly.
 (Beats Dashboards 1.2.2 is for Kibana4 and the most suitable version at the time of writing)
 
 ```
+cd ~
 curl -L -O https://download.elastic.co/beats/dashboards/beats-dashboards-1.2.2.zip
 unzip beats-dashboards-*.zip
 cd beats-dashboards-*
 ./load.sh
 ```
+# Load Filebeat Index Template into ElasticSearch
+
+The plan is to use FileBeat to ship logs to the ELK stack, so we need to load a FileBeat index template. This should configure Elastic to read the FileBeat fields sensibly.
+
+```shell
+cd ~
+curl -O https://gist.githubusercontent.com/thisismitch/3429023e8438cc25b86c/raw/d8c479e2a1adcea8b1fe86570e42abab0f10f364/filebeat-index-template.json
+curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat-index-template.json
+```
+If this has worked, you should see an output message saying Acknowledged.
+
+# Add Clients via FILEBEAT
+Each Linux server feeding data to ELK needs a FileBeat client installed.
+
+## Ubuntu / Debian distros
+
+### Copy SSL cert
+On the ELK server copy the SSL certificate. Change the user@client to reflect your system settings.
+```
+scp /etc/pki/tls/certs/logstash-forwarder.crt user@client:/tmp
+```
+After providing credentials check the copy was successful. 
+
+On the CLIENT server, copy the ELK server's certificate to the correct location (/etc/pki/tls/certs normally)
+```shell
+sudo mkdir -p /etc/pki/tls/certs
+sudo cp /tmp/logstash-forwarder.crt /etc/pki/tls/certs/
+```
+
+## Red Hat / CentOS distros
 
