@@ -287,7 +287,11 @@ sudo systemctl restart filebeat
 sudo systemctl enable filebeat
 ```
 
+## Test FileBeat
+On the ELK server check FileBeat has been properly configured by querying for the filebeat index:
+```
+curl -XGET 'http://localhost:9200/filebeat-*/_search?pretty'
+```
+The output should indicate logs are flowing. If not review the setup for errors.
 
-
-## Red Hat / CentOS distros
-
+# Connect to Kibana
