@@ -192,5 +192,14 @@ sudo systemctl enable logstash
 
 # Load Kibana Dashboards
 
+There are Kibana dashboards provided with Elastic to get things started quickly. Here the plan is to install them so the index patterns can be reused.
 
+(Beats Dashboards 1.2.2 is for Kibana4 and the most suitable version at the time of writing)
+
+```
+curl -L -O https://download.elastic.co/beats/dashboards/beats-dashboards-1.2.2.zip
+unzip beats-dashboards-*.zip
+cd beats-dashboards-*
+./load.sh
+```
 
