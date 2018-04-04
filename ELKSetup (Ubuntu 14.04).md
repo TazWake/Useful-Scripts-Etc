@@ -207,7 +207,7 @@ cd beats-dashboards-*
 
 The plan is to use FileBeat to ship logs to the ELK stack, so we need to load a FileBeat index template. This should configure Elastic to read the FileBeat fields sensibly.
 
-```shell
+```
 cd ~
 curl -O https://gist.githubusercontent.com/thisismitch/3429023e8438cc25b86c/raw/d8c479e2a1adcea8b1fe86570e42abab0f10f364/filebeat-index-template.json
 curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat-index-template.json
@@ -227,10 +227,67 @@ scp /etc/pki/tls/certs/logstash-forwarder.crt user@client:/tmp
 After providing credentials check the copy was successful. 
 
 On the CLIENT server, copy the ELK server's certificate to the correct location (/etc/pki/tls/certs normally)
-```shell
+```
 sudo mkdir -p /etc/pki/tls/certs
 sudo cp /tmp/logstash-forwarder.crt /etc/pki/tls/certs/
 ```
+### Install FileBeat
+Create the beats source list, configure GPG key then install:
+
+```
+echo "deb https://packages.elastic.co/beats/apt stable main" |  sudo tee -a /etc/apt/sources.list.d/beats.list
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install filebeat
+```
+### Configure FileBeat
+You need to modify the YAML file which comes with Filebeat - /etc/filebeat/filebeat.yml
+
+**Prospectors section**. 
+
+In this section you define which log files should be shipped and how they should be handled. Here you can specify individual logs to be pushed. This example is adding syslog and auth.log but removing the /var/log/* reference (this prevents every log being sent and may conserve bandwidth).
+```
+       paths:
+        - /var/log/auth.log
+        - /var/log/syslog
+       # - /var/log/*.log
+```
+
+and
+
+```
+       document_type: syslog
+```
+
+**Output section**
+Under the output section, find the line that says elasticsearch:, (the Elasticsearch output section) . Delete or comment out the entire Elasticsearch output section (up to the line that says #logstash:).
+
+Find the commented out Logstash output section - the line that says #logstash:, and uncomment. In this section, uncomment the hosts: ["localhost:5044"] line. Change localhost to the private IP address (or hostname, if you went with that option) of your ELK server:
+```
+  ### Logstash as output
+  logstash:
+    # The Logstash hosts
+    hosts: ["ELK_server_private_IP:5044"]
+```
+Directly under the hosts entry, and with the same indentation, add this line:
+```
+    bulk_max_size: 1024
+```
+Next set up TLS
+```
+    tls:
+      # List of root certificates for HTTPS server verifications
+      certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
+```
+Save and Quit
+
+Restart Filebeat
+```
+sudo systemctl restart filebeat
+sudo systemctl enable filebeat
+```
+
+
 
 ## Red Hat / CentOS distros
 
