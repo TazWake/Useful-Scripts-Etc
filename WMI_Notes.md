@@ -12,4 +12,5 @@ wmic process where processid=[pid] delete
 Killing running processes by NAME
 ```
 wmic process where name="evilprocess.exe" call terminate
+wmic process where name="evilprocess.exe" delete
 ```
