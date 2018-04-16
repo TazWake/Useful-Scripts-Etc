@@ -1,6 +1,6 @@
-#Using WMIC
+# Using WMIC
 
-##Some example commands to assist DFIR
+## Some example commands to assist DFIR
 
 Killing running processes by PID
 
