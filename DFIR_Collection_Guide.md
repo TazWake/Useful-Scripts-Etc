@@ -15,12 +15,11 @@
 |Browser Session Restore | | 
 |IE |  %USERPROFILE%\AppData\Local\Microsoft\Internet Explorer\Recovery| 
 |Firefox |   %USERPROFILE%\AppData\Roaming\Mozilla \Firefox\Profiles\(random text).default\sessionrestore.js| 
-|Chrome |  %USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\ (Files = current session |  current tabs |  last session |  last tabs)| 
+|Chrome |  %USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\ (Files = current session,  current tabs, last session, last tabs)| 
 |Jump List |  %USERPROFILE%\AppData\Roaming\Microsoft\ Windows\Recent\AutomaticDestinations| 
 |Prefetch |  C:\Windows\Prefetch| 
 |Amcache.hve |  C:\Windows\AppCompat\Progress\Amcache.hve| 
-|Link Files |  %USERPROFILE%\AppData\Roaming\Microsoft\Windows\Recent| 
-|%USERPROFILE%\AppData\Roaming\Microsoft\Office\Recent| 
+|Link Files |  %USERPROFILE%\AppData\Roaming\Microsoft\Windows\Recent %USERPROFILE%\AppData\Roaming\Microsoft\Office\Recent| 
 |Event Logs |  C:\Windows\system32\winevt\logs| 
 |SRUM |  C:\Windows\System32\SRU| 
 |Flash Player |  %APPDATA%\Roaming\Macromedia\FlashPlayer\#SharedObjects\(random profile pid)| 
