@@ -9,8 +9,7 @@
 |Skype (not skype for business) |  %USERPROFILE%\AppData\Roaming\Skype\(skype name)| 
 |Browser Artefacts| | 
 |IE 10 – 11 |  %USERPROFILE%\AppData\Local\Microsoft\Windows\WebCache\WebCacheV*.dat| 
-|Firefox |  %USERPROFILE%\AppData\Roaming\Mozilla \Firefox\Profiles\(random text).default\places.sqlite| 
-|Table:moz_annos| 
+|Firefox |  %USERPROFILE%\AppData\Roaming\Mozilla \Firefox\Profiles\(random text).default\places.sqlite Table:moz_annos| 
 |Chrome |  %USERPROFILE%\AppData\Local\Google\Chrome\User Data\Default\History| 
 |Browser Session Restore | | 
 |IE |  %USERPROFILE%\AppData\Local\Microsoft\Internet Explorer\Recovery| 
