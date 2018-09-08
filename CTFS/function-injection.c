@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
-void seclogin()
+void FUNCTIONAME()
 {
         setuid(0);
         setgid(0);
