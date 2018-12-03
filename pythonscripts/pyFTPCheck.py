@@ -53,4 +53,5 @@ def main():
     bruter(tgt,uname,wordlst)
     checkAnonLogin(tgt)
     print("\n\n[+][+]script execution finished.[+][+]\n\n")
-    
+    if __name__ == '__main__':
+        main()
