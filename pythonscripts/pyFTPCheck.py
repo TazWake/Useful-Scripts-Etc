@@ -53,7 +53,7 @@ def main():
     parser.add_argument("-w","--wordlist")
     args = parser.parse_args()
     if not args.target or not args.username or not args.wordlist:
-        help()
+        print(info)
         sys.exit(0)
     tgt = args.target
     uname = args.username
