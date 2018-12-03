@@ -8,9 +8,10 @@ def connScan(tgtHost, tgtPort):
     try:
         connSkt = socket(AF_INET, SOCK_STREAM)
         connSkt.connect((tgtHost, tgtPort))
-        connSkt.send('Peek-a-boo\r\n')
+        connSkt.send(b'Peek-a-boo\r\n')
         results = connSkt.recv(100)
         screenLock.acquire()
+        results = results.decode()
         print('[+]%d/tcp open'% tgtPort)
         print('[+] ' + str(results))
     except:
