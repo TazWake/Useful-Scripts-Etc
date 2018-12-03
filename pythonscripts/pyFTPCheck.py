@@ -47,6 +47,7 @@ def ftpLogin(tgt,uname,passwd):
         pass
 
 def main():
+    print("\n\n[+][+]Script execution underway.[+][+]\n\n")
     parser = argparse.ArgumentParser()
     parser.add_argument("-t","--target")
     parser.add_argument("-u","--username")
@@ -60,7 +61,7 @@ def main():
     wordlst = args.wordlist
     bruter(tgt,uname,wordlst)
     checkAnonLogin(tgt)
-    print("\n\n[+][+]script execution finished.[+][+]\n\n")
+    print("\n\n[+][+]Script execution finished.[+][+]\n\n")
     
 if __name__ == '__main__':
     main()
