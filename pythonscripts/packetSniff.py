@@ -4,9 +4,9 @@ import codecs
 import itertools
 
 protocols = {17:'UDP', 6:'TCP', 1:'ICMP'}
-
 #Special code for all Ethernet protocols (not protocol 3)
 #Complete list of possible values is here: http://lxr.free-electrons.com/source/include/linux/if_ether.h?v=2.6.24
+
 s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(0x0003))
 #All IP protocols
 #s = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(0x0800))
