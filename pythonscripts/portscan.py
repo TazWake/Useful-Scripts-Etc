@@ -38,6 +38,10 @@ def portScan(tgtHost, tgtPorts):
         t.start()
 
 def main():
+    """
+    This script scans a single host for identified ports.
+    In its current version is works best as detecting web servers.
+    """
     parser = optparse.OptionParser('usage%prog '+\
                                    '-H <target host> -p <target port>')
     parser.add_option('-H', dest='tgtHost', type='string', help='Specify target host')
