@@ -45,7 +45,7 @@ def main():
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(',')
     if(tgtHost == None) | (tgtPorts[0] == None):
-        print(parser.useage)
+        print(parser.usage)
         exit(0)
     portScan(tgtHost, tgtPorts)
 if __name__ == "__main__":
