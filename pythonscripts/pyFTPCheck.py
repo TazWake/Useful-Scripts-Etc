@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
-
 import argparse
 import sys
 import os
 import re
 from ftplib import FTP
+
+info = '''
+Usage: python pyFTPCheck.py [options]\n
+Options: -t, --target    <hostname/ip>   |   Target\n
+         -u, --user      <user>          |   User\n
+         -w, --wordlist  <filename>      |   Wordlist\n
+         -h, --help      <help>          |   print help\n
+Example: python pyFTPCheck.py -t 10.10.10.10 -u admin -w /usr/share/wordlists/RockYou.txt
+'''
 
 def checkAnonLogin(tgt):
     try:
