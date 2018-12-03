@@ -44,7 +44,7 @@ def main():
     (options, args) = parser.parse_args()
     tgtHost = options.tgtHost
     tgtPorts = str(options.tgtPort).split(',')
-    if(tgtHost == none) | (tgtPorts[0] == none):
+    if(tgtHost == None) | (tgtPorts[0] == None):
         print(parser.useage)
         exit(0)
     portScan(tgtHost, tgtPorts)
