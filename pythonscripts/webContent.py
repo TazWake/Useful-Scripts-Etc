@@ -70,7 +70,7 @@ def main():
     word_queue = create_words(wordlist_file)
     extensions = [".php",".bak",".orig",".inc",".html"]
     if(target_url == None) | (wordlist_file == None):
-        print(parse.usage)
+        print(parser.usage)
         sys.exit(0)
 
     for i in range(threads):
