@@ -1,10 +1,12 @@
-import optparse
-from socket import *
-from threading import *
+#!/usr/bin/env python3 -tt
 '''
 This script attempts to validate if a port is listening on a target server. It does this by sending a small packet of data and checking for the response. If the server doesnt recognise the packet of data it may choose to ignore the request.
 For HTTP/HTTPS servers, this is an effective test - however for other protocols it may result in false-closed replies.
 '''
+import optparse
+from socket import *
+from threading import *
+
 screenLock = Semaphore(value=1)
 
 def connScan(tgtHost, tgtPort):
