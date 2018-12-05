@@ -1,17 +1,19 @@
+#!/usr/bin/env python
 # This runs on python 2.7
 import optparse
 import urllib2
 from threading import *
 import Queue
 import urllib
-
-info = '''
+'''
 Usage: python webContent.py [options]\n
 Options: -u   <target URL>   | The target to be scanned\n
          -w   <wordlist>     | The wordlist to be used for scanning \n
          -h   <help>         | Print help\n
 Example: python webContent.py -u http://10.10.10.10/ -w /usr/share/wordlists/RockYou.txt
 '''
+
+info = "Usage: python webContent.py [options]\nOptions: -u   <target URL>   | The target to be scanned\n         -w   <wordlist>     | The wordlist to be used for scanning \n         -h   <help>         | Print help\nExample: python webContent.py -u http://10.10.10.10/ -w /usr/share/wordlists/RockYou.txt"
 def create_words(wordlist_file):
     fd = open(wordlist_file,"rb")
     raw_words = fd.readlines()
@@ -30,7 +32,6 @@ def create_words(wordlist_file):
         else:
             words.put(word)
     return words
-
 def dir_bruter(word_queue,extensions=None):
     while not word_queue.empty():
         attempt = word.queue.get()
@@ -56,7 +57,6 @@ def dir_bruter(word_queue,extensions=None):
                 if hasattr(e, 'code') and e.code != 404:
                     print('! %d => %s' % (e.code, url))
                 pass
-            
 def main():
     parser = optparse.OptionParser('usage%prog -u <target url> -w <wordlist file>')
     parser.add_option('-u', dest='tgt', type='string', help='Specify target URL')
@@ -72,10 +72,8 @@ def main():
     if(target_url == None) | (wordlist_file == None):
         print(parser.usage)
         sys.exit(0)
-
     for i in range(threads):
         t = threading.Thread(target=dir_bruter,args=(word_queue,extensions,))
         t.start()
-
 if __name__ == "__main__":
     main()
