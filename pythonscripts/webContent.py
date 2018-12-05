@@ -1,10 +1,5 @@
 #!/usr/bin/env python
 # This runs on python 2.7
-import optparse
-import urllib2
-from threading import *
-import Queue
-import urllib
 '''
 Usage: python webContent.py [options]\n
 Options: -u   <target URL>   | The target to be scanned\n
@@ -12,6 +7,11 @@ Options: -u   <target URL>   | The target to be scanned\n
          -h   <help>         | Print help\n
 Example: python webContent.py -u http://10.10.10.10/ -w /usr/share/wordlists/RockYou.txt
 '''
+import optparse
+import urllib2
+from threading import *
+import Queue
+import urllib
 
 info = "Usage: python webContent.py [options]\nOptions: -u   <target URL>   | The target to be scanned\n         -w   <wordlist>     | The wordlist to be used for scanning \n         -h   <help>         | Print help\nExample: python webContent.py -u http://10.10.10.10/ -w /usr/share/wordlists/RockYou.txt"
 def create_words(wordlist_file):
