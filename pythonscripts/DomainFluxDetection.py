@@ -22,7 +22,7 @@ def DnsQuestion(pkt):
 
 def main():
     parser = optparse.OptionParser('usage%prog -f <pcap filename>')
-    parse.add_option('-f', dest='pcapFilename', type='string', help='Specify the PCAP filename you want to examine')
+    parser.add_option('-f', dest='pcapFilename', type='string', help='Specify the PCAP filename you want to examine')
     (options,args) = parser.parse.args()
     unAnsReqs = 0
     pcapf = options.pcapFilename
