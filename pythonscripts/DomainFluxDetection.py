@@ -35,5 +35,5 @@ def main():
             unAnsReqs = unAnsReqs +1
     print("[!] " + str(UnAnsReqs)+ " unanswered name requests in total")
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     main()
