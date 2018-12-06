@@ -21,7 +21,7 @@ def DnsQuestion(pkt):
             return False
 
 def main():
-    parser = optparse.OptionParse('usage%prog -f <pcap filename>')
+    parser = optparse.OptionParser('usage%prog -f <pcap filename>')
     parse.add_option('-f', dest='pcapFilename', type='string', help='Specify the PCAP filename you want to examine')
     (options,args) = parser.parse.args()
     unAnsReqs = 0
