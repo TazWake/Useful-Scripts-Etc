@@ -2,9 +2,14 @@
 '''
 This script is designed to help detect domain flux traffic.
 
-Initial version requires the pcap to be called example.pcap. Options to be added later.
+The -f switch specifies the filename of the PCAP to be analysed.
+
+Example: python DomainFluxDetection.py -f ExampleConficker.pcap
 '''
+
 from scapy.all import *
+import optparse
+
 def DnsQuestion(pkt):
     if pkt.haslayer(DNSRR) and pkt.getlayer(UDP).sport == 53:
         rcode = pkt.getlayer(DNS).rcode
@@ -14,12 +19,21 @@ def DnsQuestion(pkt):
             return True
         else:
             return False
+
 def main():
+    parser = optparse.OptionParse('usage%prog -f <pcap filename>')
+    parse.add_option('-f', dest='pcapFilename', type='string', help='Specify the PCAP filename you want to examine')
+    (options,args) = parser.parse.args()
     unAnsReqs = 0
-    pkts = rdpcap('example.pcap')
+    pcapf = options.pcapFilename
+    if(pcapf == none):
+        print(parse.usage)
+        sys.exit()
+    pkts = rdpcap(pcapf)
     for pkt in pkts:
         if DnsQuestion(pkt):
             unAnsReqs = unAnsReqs +1
     print("[!] " + str(UnAnsReqs)+ " unanswered name requests in total")
+
 if __name__ = '__main__':
     main()
