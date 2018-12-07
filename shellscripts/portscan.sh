@@ -2,7 +2,6 @@
 #TMFS24
 #24-07-2018
 
-
 echo "Checks for open tcp ports on host"
 
 if [ "$#" -ne 1 ]; then
@@ -12,7 +11,6 @@ fi
 port=1
 while [ $port -le 65535 ]
 do
-	
 	(echo > /dev/tcp/$1/$port) > /dev/null 2>&1 
 	if [ $? -eq 0 ]; then
 	       	echo "$port is open"
@@ -23,5 +21,4 @@ do
 	fi
 	port=$((port+1))
 done
-
 echo "Scan complete for $1"
