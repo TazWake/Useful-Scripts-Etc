@@ -1,5 +1,5 @@
 #!/bin/bash
-#TMFS24
+#created by TMFS24 not me
 #24-07-2018
 
 echo "Checks for open tcp ports on host"
