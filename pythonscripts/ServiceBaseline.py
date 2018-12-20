@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+# note - this script requires https://github.com/mhammond/pywin32
+
 from __future__ import print_function
 import pywintypes
 import win32api
