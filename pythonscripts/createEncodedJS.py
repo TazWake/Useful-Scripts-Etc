@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
+'''This script takes ASCII input and turns it into
+ordinal numbers for use in String.fromCharCode
+situations. If your string includes quotes, then
+it is advised you use -c """your data"""'''
 import argparse
-``` This script takes ASCII input and turns it into ordinal numbers for use in String.fromCharCode situations. If your string includes quotes, then it is advised you use -c """your data"""```
-def createEncodedJS(ascii):
+
+def create_encoded_js(i):
+    '''This encodes the incoming text'''
     decstring = ""
-    for char in ascii:
+    for char in i:
         decstring += str(ord(char)) + ","
     return decstring[:-1]
 def main():
-    parser=argparse.ArgumentParser()
-    parser.add_argument('-c', required='true', metavar='ASCII Code to convert', help='Provide the ASCII code to convert')
+    '''Run the program'''
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-c', required='true', help="string to convert")
     args = parser.parse_args()
-    if args.c == None:
+    if args.c is None:
         exit()
     else:
-        print(createEncodedJS(args.c))        
+        print(create_encoded_js(args.c))
 if __name__ == '__main__':
-    main() 
+    main()
