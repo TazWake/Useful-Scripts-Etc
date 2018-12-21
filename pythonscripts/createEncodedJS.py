@@ -6,7 +6,6 @@ def createEncodedJS(ascii):
     for char in ascii:
         decstring += str(ord(char)) + ","
     return decstring[:-1]
-
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('-c', required='true', metavar='ASCII Code to convert', help='Provide the ASCII code to convert')
@@ -15,6 +14,5 @@ def main():
         exit()
     else:
         print(createEncodedJS(args.c))        
-
 if __name__ == '__main__':
     main() 
