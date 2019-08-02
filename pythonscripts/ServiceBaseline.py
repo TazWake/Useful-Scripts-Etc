@@ -16,7 +16,7 @@ def main():
     parser = optparse.OptionParser('useage%prog -f <path and filename>')
     parser.add_option('-f', dest='filename', type='string', help='Path and filename to where you want the output saved')
     (options, args) = parser.parse_args()
-    f = options.filename
+    file = options.filename
     read_perm = (win32con.KEY_READ | 
                  win32con.KEY_ENUMERATE_SUB_KEYS |
                  win32con.KEY_QUERY_VALUE)
@@ -32,8 +32,10 @@ def main():
         name = name.lower()
         path = path.lower()
         print(name, " = ", path)
-        f = open(f,wt)
-        f.write(name, " = ", path)
+        content = name + " = " + path
+        f = open(file,"at")
+        f.write(content)
+        f.write("\n")
         f.close
 
         
