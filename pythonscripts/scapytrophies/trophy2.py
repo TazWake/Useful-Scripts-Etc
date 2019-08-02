@@ -14,10 +14,19 @@ def singleicmp(ipadd):
 
 def icmpframe(ipadd):
     '''build an implicit ICMP frame (i.e. layer 2) with a TTL value from to 2 to 7 & send to the network etc'''
+    # This is incomplete
     packet=IP(dst=ipadd,ttl=[2,7])/ICMP()
     pingu = sr1(packet)
     pingu.nsummary()
     return()
+
+def foreverping(ipadd):
+    '''send ICMP echo request forever using the sr*() function that send packets forever etc'''
+    # not yet started
+
+def sslsniff(tbc):
+    '''This challenge involves sniffing 5 packets on port 443'''
+    # not yet started
 
 def main():
     parser = optparse.OptionParser('usage%prog -i <IP Address to ping>')
