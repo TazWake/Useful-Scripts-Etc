@@ -6,7 +6,7 @@ from scapy.all import *
 Usage: python dnsquery.py [options]
 Options: -n <IP> | The DNS server to be queried
          -l <domain name> | the domain name to look up
-Example: python dnsquery.py -n 8.8.8.8 -u bbc.co.uk
+Example: python dnsquery.py -n 8.8.8.8 -l bbc.co.uk
 '''
 
 
