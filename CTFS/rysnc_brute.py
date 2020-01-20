@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+``` invoke with python3 filename /path/to/wordlist```
+
 import sys
 import subprocess
 from subprocess import PIPE
