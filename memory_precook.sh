@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# use: scripname.sh imagefilename volatilityprofile
+
 # This script runs a standard battery of memory analysis tools against a sample image to provide a standardised set of artefacts
 # Two arguments are required - the file name of the memory image and the volatility profile to be used
 # With volatility 3, the second argument can be removed and the script modified appropriately
@@ -32,8 +34,9 @@ echo "*** carving network data ***"
 head -n1 netscan.txt > established.txt
 grep ESTABLISHED netscan.txt >> established.txt
 head -n1 netscan.txt > listening.txt
-grep LISTENING >> listening.txt
+grep LISTENING netscan.txt >> listening.txt
 echo "*** network data carved ***"
+echo ""
 echo "*** attempting hashdump ***"
 # This will attempt to locate the SYSTEM and SAM hives and use them to dump hashes from the memory image.
 syshive=$(grep SYSTEM hives.txt | cut -d" " -f1)
@@ -55,6 +58,8 @@ echo "*** Running Strings ***"
 # as a final catch all strings are run against the image
 strings -n 8 $1 > strings8.txt
 strings -n 12 $1 > strings12.txt
+echo "********************"
+echo ""
 echo "********************"
 echo "Initial Assessment Completed"
 echo "********************" 
