@@ -25,7 +25,7 @@ vol.py -f $1 --profile=$2 getservicesids --output-file=serviceSIDS.txt
 vol.py -f $1 --profile=$2 mimikatz --output-file=mimikatz.txt
 mkdir malfind
 vol.py -f $1 --profile=$2 malfind -D ./malfind/ --output-file=malfind.txt
-mdir MFT
+mkdir MFT
 vol.py -f $1 --profile=$2 mftparser -D ./MFT/ --output-file=mft.txt
 echo "*** carving network data ***"
 # This is to create two easier to read text files showing established and listening connections
