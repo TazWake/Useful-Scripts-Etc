@@ -24,7 +24,7 @@ def get_ssh_port():
     return find_line_in_file(sshd_config,"Port")
 
 def get_root_login():
-    return find_line_in_file(sshd_config,"PermitRotoLogin")
+    return find_line_in_file(sshd_config,"PermitRootLogin")
 
 def get_ssh_password_config():
     return find_line_in_file(sshd_config,"PasswordAuthentication")
