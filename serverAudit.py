@@ -60,7 +60,7 @@ def generate_report():
     print("Firewall - Default Zone\n " + firewall_rules)
     print("SSH Port: " + str(ssh_port))
     print("Password Authentication: " + str(permit_pass_auth))
-    print("SELinux LabelL " + selinux_label)
+    print("SELinux Label: " + selinux_label)
     print("nmapScan")
     print("################################")
 
