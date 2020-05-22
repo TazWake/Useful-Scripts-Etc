@@ -25,6 +25,8 @@ vol.py -f $1 --profile=$2 shimcache --output-file=shimcache.txt
 vol.py -f $1 --profile=$2 shimcachemem --output-file=shimcachemem.txt
 vol.py -f $1 --profile=$2 getservicesids --output-file=serviceSIDS.txt
 vol.py -f $1 --profile=$2 mimikatz --output-file=mimikatz.txt
+vol.py -f $1 --profile=$2 handles --output-file=handles.txt
+vol.py -f $1 --profile=$2 getsids --output-file=AllSIDS.txt
 mkdir malfind
 vol.py -f $1 --profile=$2 malfind -D ./malfind/ --output-file=malfind.txt
 mkdir MFT
