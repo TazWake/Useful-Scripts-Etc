@@ -33,7 +33,8 @@ checksum_copy() {
 	    check=$(md5sum $file | cut -d" " -f1)
 		cp checksum.txt $check.txt
 		echo "The md5 of the checksum file is $check"
-		echo "A copy of the checksum file has been created as $check"
+		echo "A copy of the checksum file has been created as $check.txt"
+		echo "[ ] A copy of the checksum has been create as $check.txt" >> log.txt
 	else
 	    echo "Unable to locate the checksum file"
 	fi
@@ -114,7 +115,7 @@ echo "Running Bulk Extractor"
 echo "********************"
 mkdir bulk_output
 bulk_extractor $fn -o ./bulk_output
-echo "bulk_extractor completed at $(date | cut -d" " -f4,5), no checksums generated." >> log.txt
+echo "[+] bulk_extractor completed at $(date | cut -d" " -f4,5), no checksums generated." >> log.txt
 echo "********************"
 echo ""
 echo "********************"
@@ -126,6 +127,7 @@ strings -n 12 $fn > strings12.txt
 update_logs strings12.txt
 echo "********************"
 echo ""
+checksum_copy
 echo "Automated Data carving completed at $(date)" >> log.txt
 echo "********************"
 echo "Initial Assessment Completed"
