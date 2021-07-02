@@ -2,6 +2,8 @@
 
 This is a quick guide for interacting with Windows volume shadow copies using [SIFT](https://digital-forensics.sans.org/community/downloads)
 
+*Note: You need to use uncompressed images for this. If you have E01 or similar, they have to be converted before use
+
 ## Use ewfmount to create raw image
 This assumes the file you are analysing is in E01 format.
 ```shell
